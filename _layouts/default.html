@@ -5,6 +5,15 @@ layout: compress
 <html class="no-js" lang="{% if site.language == nil %}en{% else %}{{ site.language }}{% endif %}">
 <head>
 	{% include _head.html %}
+	{% if site.google_tagmanager %}
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','{{ site.google_tagmanager }}');</script>
+		<!-- End Google Tag Manager -->
+	{% endif %}
 </head>
 <body id="top-of-page" class="{{ layout.format }}">
 	{% unless page.skip_boilerplate %}
@@ -19,5 +28,12 @@ layout: compress
 	{% endunless %}
 
 	{% include _footer_scripts.html %}
+	{% if site.google_tagmanager %}
+	<!-- Google Tag Manager -->
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tagmanager }}"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	{% endif %}
 </body>
 </html>
